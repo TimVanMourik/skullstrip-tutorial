@@ -15,7 +15,7 @@ fsl_flirt = pe.Node(interface = fsl.FLIRT(), name='fsl_flirt')
 
 #Create a workflow to connect all those nodes
 analysisflow = nipype.Workflow('MyWorkflow')
-
+analysisflow.connect(fsl_bet, "out_file", fsl_flirt, "in_file")
 
 #Run the workflow
 plugin = 'MultiProc' #adjust your desired plugin here
